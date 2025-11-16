@@ -1,0 +1,379 @@
+/* ===== ANIMATIONS DE BASE ===== */
+
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes glow {
+    0%, 100% { 
+        box-shadow: 0 0 20px rgba(102, 126, 234, 0.4);
+    }
+    50% { 
+        box-shadow: 0 0 40px rgba(102, 126, 234, 0.8);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+/* ===== AMÉLIORATIONS LOGO ===== */
+
+.logo {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-animation 4s ease infinite;
+}
+
+/* ===== TITRES ANIMÉS ===== */
+
+.section-title {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-animation 4s ease infinite;
+}
+
+.hero h1 {
+    background: linear-gradient(90deg, #667eea 0%, #fff 50%, #764ba2 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 4s linear infinite;
+}
+
+/* ===== EFFET GLOW SUR SECTIONS ===== */
+
+.about-content:hover,
+.pricing:hover,
+.service-card:hover {
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* ===== BORDURE LUMINEUSE ===== */
+
+.about-content,
+.pricing,
+.service-card {
+    position: relative;
+    z-index: 1;
+}
+
+.about-content::before,
+.pricing::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, #667eea, #764ba2, #667eea);
+    background-size: 400% 400%;
+    border-radius: 22px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    animation: gradient-animation 3s ease infinite;
+}
+
+.about-content:hover::before,
+.pricing:hover::before {
+    opacity: 1;
+}
+
+/* ===== EFFET BRILLANCE SUR CARTES ===== */
+
+.service-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.15) 50%,
+        transparent 70%
+    );
+    transform: rotate(45deg);
+    transition: all 0.6s ease;
+    pointer-events: none;
+}
+
+.service-card:hover::after {
+    left: 100%;
+}
+
+/* ===== LIENS MENU AVEC SOULIGNEMENT ===== */
+
+.nav-links a {
+    position: relative;
+    display: inline-block;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* ===== BOUTONS AVEC EFFET RIPPLE ===== */
+
+.cta-button {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.cta-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.cta-button:active::before {
+    width: 0;
+    height: 0;
+    transition: 0s;
+}
+
+/* ===== LISTE TARIFS INTERACTIVE ===== */
+
+.pricing-list li {
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+.pricing-list li:hover {
+    padding-left: 15px;
+    background: rgba(102, 126, 234, 0.2);
+    transform: translateX(5px);
+}
+
+/* ===== BOUTONS SOCIAUX ===== */
+
+.contact a {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.contact a::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.5s, height 0.5s;
+}
+
+.contact a:hover::before {
+    width: 200px;
+    height: 200px;
+}
+
+.contact a:hover {
+    transform: translateY(-5px) scale(1.05);
+}
+
+/* ===== NAVBAR AVEC OMBRE AU SCROLL ===== */
+
+.navbar {
+    transition: all 0.3s ease;
+}
+
+/* ===== GALERIE AVEC ROTATION ===== */
+
+.gallery-item {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gallery-item:hover {
+    transform: scale(1.1) rotate(-2deg);
+}
+
+/* ===== HERO AVEC PERSPECTIVE ===== */
+
+.hero {
+    transition: transform 0.1s ease-out;
+}
+
+/* ===== SCROLLBAR PERSONNALISÉE ===== */
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0a0a;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #764ba2 0%, #667eea 100%);
+}
+
+/* ===== SÉLECTION DE TEXTE ===== */
+
+::selection {
+    background: rgba(102, 126, 234, 0.4);
+    color: #ffffff;
+}
+
+::-moz-selection {
+    background: rgba(102, 126, 234, 0.4);
+    color: #ffffff;
+}
+
+/* ===== FOOTER AVEC LIGNE ===== */
+
+footer {
+    position: relative;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #667eea, transparent);
+}
+
+/* ===== ANIMATIONS D'ENTRÉE ===== */
+
+.section {
+    animation: slideUp 0.8s ease-out;
+}
+
+/* ===== CARTES 3D ===== */
+
+.service-card {
+    transform-style: preserve-3d;
+    transition: all 0.4s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-15px) scale(1.08) rotateX(5deg) rotateY(3deg);
+}
+
+/* ===== EFFET DE PULSE SUR HERO ===== */
+
+.hero::before {
+    animation: pulse-size 6s ease-in-out infinite;
+}
+
+@keyframes pulse-size {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.2); opacity: 0.5; }
+}
+
+/* ===== AMÉLIORATION BOUTON DISCORD ===== */
+
+a[href*="discord"] {
+    position: relative;
+    overflow: hidden;
+}
+
+a[href*="discord"]::after {
+    content: '💬';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+a[href*="discord"]:hover::after {
+    opacity: 1;
+}
+
+/* ===== RESPONSIVE OPTIMISÉ ===== */
+
+@media (max-width: 768px) {
+    .service-card:hover {
+        transform: translateY(-10px) scale(1.05);
+    }
+    
+    .cta-button:hover {
+        transform: translateY(-3px) scale(1.1);
+    }
+}
+
+/* ===== AMÉLIORATION FOCUS ===== */
+
+.cta-button:focus,
+.nav-links a:focus {
+    outline: 2px solid #667eea;
+    outline-offset: 4px;
+}
+
+/* ===== TRANSITION GLOBALE SMOOTH ===== */
+
+* {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== EFFET FADE IN AU CHARGEMENT ===== */
+
+body {
+    animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
